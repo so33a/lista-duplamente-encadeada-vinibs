@@ -91,3 +91,50 @@ void destroiLista(ListaDupla l) {
   free(l);
 }
 
+/**********************************************/
+link encontraMenor(ListaDupla l) {
+  link t = l->head;
+  link lmenor;
+  int menor = 999999;
+
+  while (t != l->z) {
+    if(t->item < menor) {
+      menor = t->item;
+      lmenor = t;
+    }
+    t = t->next;
+  }
+  return lmenor;
+}
+
+void ordenaLista(ListaDupla l){
+  link t = l->head;
+  ListaDupla l2;
+
+  while(t != l-z){
+    link menor = encontraMenor(l);
+
+    // Remove o menor valor da lista original
+    link aux = menor->prev->next;
+    menor->prev->next = menor->next->prev;
+    menor->next->prev = aux;
+
+    // Adiciona o menor valor como último elemento da lista extra
+    if(l2->head == 0){
+      l2->head = menor;
+      l2->z = menor;      
+      menor->prev = l2;
+    } else{
+      link x = l2->z;
+      t = menor;
+
+      x->next = t;
+      t->prev = x;
+      l2->z = t;
+    }
+  }
+
+  // Redefine a lista original com os valores da lista extra
+  l->head = l2->head;
+  l->z = l2->z;
+}
