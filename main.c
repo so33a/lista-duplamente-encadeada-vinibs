@@ -13,11 +13,20 @@ int main () {
   insereDepois(l, aux2, aux);
   imprime(l);
   imprimeReverso(l);
+  /*
   printf ("\nremovendo %d \n", aux2->item);
   if((aux2 = buscar(l, 21) ) != NULL) 
     removeNo(aux2);
   imprime(l);
   destroiLista(l);
+  */
+
+  link menor = encontraMenor(l);
+  printf("Menor: %d\n", menor->item);
+  ordenaLista(l);
+  imprime(l);
+
+
 
   return 0;
 }
